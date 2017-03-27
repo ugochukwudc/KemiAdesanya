@@ -12,4 +12,7 @@ package KemiAdesanya.Item;
  */
 public class HairTies extends Product{
     
+    private Boolean Type; //Single/BULK
+    private String Design;
+    
 }

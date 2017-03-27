@@ -7,9 +7,9 @@
 package KemiAdesanya.Item;
 
 /**
- *
+ * Cards Item sub class
  * @author Ugochukwudouglas
  */
 public class Cards extends Product{
-    
+
 }
