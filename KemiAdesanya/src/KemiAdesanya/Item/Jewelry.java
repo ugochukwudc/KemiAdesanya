@@ -6,10 +6,13 @@
  */
 package KemiAdesanya.Item;
 
+import java.util.logging.Logger;
+
 /**
  *
  * @author Ugochukwudouglas
  */
 public class Jewelry extends Product{
+    private static final Logger LOG = Logger.getLogger(Jewelry.class.getName());
     
 }

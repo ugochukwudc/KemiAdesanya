@@ -6,6 +6,8 @@
  */
 package KemiAdesanya.Item;
 
+import java.text.NumberFormat;
+
 /**
  * Product parent super class
  * This class hold properties of all items, like SKU, Name, price, etc
@@ -15,6 +17,7 @@ package KemiAdesanya.Item;
  */
 public abstract class Product {
     private final String SKU;
+    private final int numberofItems;
     private String Name;
     private double price;
     private String Description;
@@ -25,15 +28,26 @@ public abstract class Product {
      * @param Name product name : hair Ties, jewelry, 
      * @param price
      * @param Description
-     * @param uniqueID
+     * @param numberofItems
      */
-    public Product(String Name, double price, String Description, int uniqueID) {
+    public Product(String Name, double price, int numberofItems, String Description) {
+        this.Name = Name;
+        this.price = price;
+        this.Description = Description;
+        this.numberofItems = numberofItems;
+        this.uniqueID = genUniqueID();
+        this.SKU = this.genSKU();
+    }
+    
+    public Product(String Name, double price, int numberofItems, String Description, int uniqueID) {
+        this.numberofItems = numberofItems;
         this.Name = Name;
         this.price = price;
         this.Description = Description;
         this.uniqueID = uniqueID;
-        this.SKU=genSKU();
+        this.SKU = this.genSKU();
     }
+    
     
     /**
      *  No arguments constructor for Product
@@ -41,9 +55,10 @@ public abstract class Product {
     public Product() {
         this.Name="Hair Ties";
         this.price=0.0;
-        this.Description="Plain Hair Tie";
+        this.numberofItems=4;
+        this.Description="Plain Hair Ties";
         this.uniqueID= genUniqueID();
-        this.SKU= genSKU();
+        this.SKU= this.genSKU();
     }
 
     /**
@@ -66,7 +81,7 @@ public abstract class Product {
     }
 
     /**
-     * @return Generated SKU, using class's parameters
+     * @return Generated SKU, using class parameters
      */
     private String genSKU() {
         return "Generated SKU";
@@ -78,6 +93,10 @@ public abstract class Product {
      */
     private int genUniqueID() {
         return 1001;
+    }
+
+    public int getNumberofItems() {
+        return numberofItems;
     }
     
 
@@ -112,8 +131,12 @@ public abstract class Product {
     public int getUniqueID() {
         return uniqueID;
     }
-
     
-    
-    
+    public String dispPrice(){
+        String P;
+        P = NumberFormat.getCurrencyInstance().format(price);
+        P = P + " CAD"; // optional
+        
+        return P;
+    }
 }
