@@ -16,7 +16,7 @@ import java.text.NumberFormat;
  * 
  */
 public abstract class Product {
-    private final String SKU;
+    private String SKU;
     private final int numberofItems;
     private String Name;
     private double price;
@@ -69,7 +69,14 @@ public abstract class Product {
     public String toString() {
         return "Product{" + "SKU=" + SKU + ", Name=" + Name + ", price=" + price + ", Description=" + Description + ", uniqueID=" + uniqueID + '}';
     }
-    
+
+    /**
+     *
+     * @param SKU
+     */
+    protected void setSKU(String SKU) {
+        this.SKU = SKU;
+    }
     
 
     /**
@@ -138,5 +145,27 @@ public abstract class Product {
         P = P + " CAD"; // optional
         
         return P;
+    }
+    
+    /**
+     * Returns String comprising of the SKU, 
+     * description and Currency formatted price of the product 
+     * This will be called when printing the list of products to an excel
+     * spreadsheet.
+     * @return tab delimited string of Products SKU, description and Price
+     * For example, it can return:
+     * HT-SP5-3B2N   Plain Hair Ties - 5 Ties, 3 Blue 2 Black   $7.25 CAD
+     */
+    public String toExcel(){
+        char tab = '\t';
+        String ret;
+        
+        ret = this.getSKU()
+                + tab
+                + this.getDescription()
+                + tab
+                + this.dispPrice();
+        return ret;
+        
     }
 }

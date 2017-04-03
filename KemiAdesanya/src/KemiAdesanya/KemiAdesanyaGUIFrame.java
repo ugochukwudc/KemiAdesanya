@@ -30,51 +30,72 @@ public class KemiAdesanyaGUIFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        jButton1 = new javax.swing.JButton();
+        Logo = new javax.swing.JLabel();
+        ScrollDisp = new javax.swing.JScrollPane();
+        DispHT = new javax.swing.JTextArea();
+        Do = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/KemiAdesanya/Files/Logo.png"))); // NOI18N
+        Logo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/KemiAdesanya/Files/Logo.png"))); // NOI18N
+        Logo.setVerticalAlignment(javax.swing.SwingConstants.TOP);
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        DispHT.setColumns(20);
+        DispHT.setRows(5);
+        ScrollDisp.setViewportView(DispHT);
 
-        jButton1.setText("Do");
+        Do.setText("Do");
+        Do.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(297, Short.MAX_VALUE)
-                .addComponent(jLabel1)
+                .addContainerGap(295, Short.MAX_VALUE)
+                .addComponent(Logo)
                 .addContainerGap(298, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1))
+                .addComponent(ScrollDisp))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addComponent(Do)
                 .addGap(128, 128, 128))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
+                .addComponent(Logo)
                 .addGap(36, 36, 36)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(ScrollDisp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
+                .addComponent(Do)
                 .addContainerGap(141, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void DoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DoActionPerformed
+        // TODO add your handling code here:
+        String ret;
+        
+        ret = ht1.toExcel()
+                + "\r\n" + ht2.toExcel()
+                + "\r\n" + "\r\n" + "\r\n"
+                + "======================================="
+                + "\r\n" + ht1
+                + "\r\n" + ht2;
+        DispHT.setTabSize(4);
+        DispHT.setText(ret);
+    }//GEN-LAST:event_DoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -104,9 +125,6 @@ public class KemiAdesanyaGUIFrame extends javax.swing.JFrame {
         //</editor-fold>
         
         
-        //HairTies(char type, String design, boolean uniform, double price, int numberofItems, String Description)
-        HairTies ht1 = new HairTies('S', "PLAIN", true, 7.25, 5, "Blue hair ties - pack of five");
-        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -116,9 +134,13 @@ public class KemiAdesanyaGUIFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextArea DispHT;
+    private javax.swing.JButton Do;
+    private javax.swing.JLabel Logo;
+    private javax.swing.JScrollPane ScrollDisp;
     // End of variables declaration//GEN-END:variables
+
+    //HairTies(char type, String design, boolean uniform, double price, int numberofItems, String Description)
+    public HairTies ht1 = new HairTies('S', "PLAIN", true, 7.25, 5, "Blue hair ties - pack of five");
+    public HairTies ht2 = new HairTies('B', "DESIGN", true, 69.59, 50, "Peacock Designed Ties", 23654);
 }

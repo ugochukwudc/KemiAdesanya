@@ -19,7 +19,7 @@ public class HairTies extends Product implements Serializable{
     private final char type; // Single or BULK
     private final String design; // Plain, Peace, Peacock
     private final boolean uniform; // uniform collection, or not
-    
+/*
     @Override
     public String toString(){
         String ret;
@@ -28,19 +28,31 @@ public class HairTies extends Product implements Serializable{
         ret = ret + this.getDescription();
         return ret;
     }
-
+*/
     public HairTies(char type, String design, boolean uniform, double price, int numberofItems, String Description) {
         super("Hair-Ties", price, numberofItems, Description);
         this.type = type;
         this.design = design;
         this.uniform = uniform;
+        this.setSKU(this.genSKU());
     }
 
+    /**
+     *
+     * @param type
+     * @param design
+     * @param uniform
+     * @param price
+     * @param numberofItems
+     * @param Description
+     * @param uniqueID
+     */
     public HairTies(char type, String design, boolean uniform, double price, int numberofItems, String Description, int uniqueID) {
         super("Hair-Ties", price, numberofItems, Description, uniqueID);
         this.type = type;
         this.design = design;
         this.uniform = uniform;
+        this.setSKU(this.genSKU());
     }
     
     
@@ -55,22 +67,6 @@ public class HairTies extends Product implements Serializable{
         }
         
         return ret;
-    }
-    /**
-     * 
-     * @return tab delimited string of Products SKU, description and Price 
-     */
-    public String toExcel(){
-        char tab = '\t';
-        String ret;
-        
-        ret = this.getSKU()
-                + tab
-                + this.getDescription()
-                + tab
-                + this.dispPrice();
-        return ret;
-        
     }
     
 }
