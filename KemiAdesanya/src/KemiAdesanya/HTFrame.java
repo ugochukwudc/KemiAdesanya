@@ -28,18 +28,28 @@ public class HTFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(500, 500));
+        setModalExclusionType(null);
+        getContentPane().setLayout(null);
+
+        jButton1.setText("jButton1");
+        getContentPane().add(jButton1);
+        jButton1.setBounds(370, 410, 97, 29);
+
+        jButton2.setText("jButton2");
+        getContentPane().add(jButton2);
+        jButton2.setBounds(30, 420, 97, 29);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/KemiAdesanya/Files/KemiAdesanyaLogo.jpeg"))); // NOI18N
+        jLabel1.setMaximumSize(new java.awt.Dimension(1000, 1000));
+        jLabel1.setPreferredSize(new java.awt.Dimension(1068, 900));
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(0, 0, 500, 510);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -81,5 +91,8 @@ public class HTFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

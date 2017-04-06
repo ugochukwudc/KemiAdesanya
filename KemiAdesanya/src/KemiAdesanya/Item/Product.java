@@ -6,42 +6,43 @@
  */
 package KemiAdesanya.Item;
 
+import java.io.Serializable;
 import java.text.NumberFormat;
+import java.util.logging.Logger;
 
 /**
- * Product parent super class
+ * Product parent/super class
  * This class hold properties of all items, like SKU, Name, price, etc
  * Would be used to create sub classes for products like Jewelry, Hair Ties, etc
  * @author Ugochukwudouglas
  * 
  */
-public abstract class Product {
-    private String SKU;
+public abstract class Product implements Serializable{
+    private static final Logger LOG = Logger.getLogger(Product.class.getName());
     private final int numberofItems;
-    private String Name;
-    private double price;
-    private String Description;
+    private final String Name;
     private final int uniqueID;
-
+    private String SKU;
+    private String Description;
+    private double price;
     /**
-     *
-     * @param Name product name : hair Ties, jewelry, 
+     * 
      * @param price
      * @param Description
      * @param numberofItems
      */
-    public Product(String Name, double price, int numberofItems, String Description) {
-        this.Name = Name;
+    public Product(double price, int numberofItems, String Description) {
         this.price = price;
         this.Description = Description;
         this.numberofItems = numberofItems;
         this.uniqueID = genUniqueID();
         this.SKU = this.genSKU();
+        this.Name = this.getClass().getSimpleName();
     }
     
-    public Product(String Name, double price, int numberofItems, String Description, int uniqueID) {
+    public Product(double price, int numberofItems, String Description, int uniqueID) {
+        this.Name = this.getClass().getSimpleName();
         this.numberofItems = numberofItems;
-        this.Name = Name;
         this.price = price;
         this.Description = Description;
         this.uniqueID = uniqueID;
@@ -53,8 +54,8 @@ public abstract class Product {
      *  No arguments constructor for Product
      */
     public Product() {
-        this.Name="Hair Ties";
-        this.price=0.0;
+        this.Name = this.getClass().getSimpleName();
+        this.price=6.00;
         this.numberofItems=4;
         this.Description="Plain Hair Ties";
         this.uniqueID= genUniqueID();
@@ -69,7 +70,9 @@ public abstract class Product {
     public String toString() {
         return "Product{" + "SKU=" + SKU + ", Name=" + Name + ", price=" + price + ", Description=" + Description + ", uniqueID=" + uniqueID + '}';
     }
-
+    public String getName(){
+        return Name;
+    }
     /**
      *
      * @param SKU
@@ -99,26 +102,18 @@ public abstract class Product {
      * @return A unique integer generated for each item
      */
     private int genUniqueID() {
-        return 1001;
+        int MAX = 10000001;
+        int min = 1001;
+        int ret;
+        ret = (int) (Math.random()*(MAX-min)) + min;
+        return ret;
     }
 
     public int getNumberofItems() {
         return numberofItems;
     }
     
-
-    /**
-     *
-     * @return
-     */
-    public String getName() {
-        return Name;
-    }
-
-    public void setName(String Name) {
-        this.Name = Name;
-    }
-
+    
     public double getPrice() {
         return price;
     }
@@ -166,6 +161,6 @@ public abstract class Product {
                 + tab
                 + this.dispPrice();
         return ret;
-        
     }
+    
 }

@@ -8,10 +8,13 @@ package KemiAdesanya.Item;
 
 import java.io.Serializable;
 import java.awt.*;
+import java.util.Objects;
 
 
 /**
- *
+ * Hair Ties class used to create Hair Tie objects as a product
+ * The class is made serializable to allow saving and reading objects to file
+ * 
  * @author Ugochukwudouglas
  */
 public class HairTies extends Product implements Serializable{
@@ -29,8 +32,24 @@ public class HairTies extends Product implements Serializable{
         return ret;
     }
 */
+
+    public HairTies() {
+        this.type = 'S';
+        this.design = "PLAIN";
+        this.uniform = true;
+    }
+    
+    /**
+     *
+     * @param type
+     * @param design
+     * @param uniform
+     * @param price
+     * @param numberofItems
+     * @param Description
+     */
     public HairTies(char type, String design, boolean uniform, double price, int numberofItems, String Description) {
-        super("Hair-Ties", price, numberofItems, Description);
+        super(price, numberofItems, Description);
         this.type = type;
         this.design = design;
         this.uniform = uniform;
@@ -38,7 +57,7 @@ public class HairTies extends Product implements Serializable{
     }
 
     /**
-     *
+     * Main Constructor for HairTies
      * @param type
      * @param design
      * @param uniform
@@ -48,19 +67,18 @@ public class HairTies extends Product implements Serializable{
      * @param uniqueID
      */
     public HairTies(char type, String design, boolean uniform, double price, int numberofItems, String Description, int uniqueID) {
-        super("Hair-Ties", price, numberofItems, Description, uniqueID);
+        super(price, numberofItems, Description, uniqueID);
         this.type = type;
         this.design = design;
         this.uniform = uniform;
         this.setSKU(this.genSKU());
     }
     
-    
     private String genSKU(){
         String ret;
         ret = "HT"
                 + "-" + this.type
-                + "-" + this.design.charAt(0);
+                + "-" + this.design.substring(0, 3);
         // if all entries are uniform
         if (this.uniform){
             ret = ret + "-" + this.getNumberofItems();
@@ -70,3 +88,4 @@ public class HairTies extends Product implements Serializable{
     }
     
 }
+
