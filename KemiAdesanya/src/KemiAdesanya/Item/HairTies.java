@@ -7,8 +7,6 @@
 package KemiAdesanya.Item;
 
 import java.io.Serializable;
-import java.awt.*;
-import java.util.Objects;
 
 
 /**
@@ -22,7 +20,7 @@ public class HairTies extends Product implements Serializable{
     private final char type; // Single or BULK
     private final String design; // Plain, Peace, Peacock
     private final boolean uniform; // uniform collection, or not
-/*
+
     @Override
     public String toString(){
         String ret;
@@ -31,8 +29,10 @@ public class HairTies extends Product implements Serializable{
         ret = ret + this.getDescription();
         return ret;
     }
-*/
-
+    
+    /**
+     *
+     */
     public HairTies() {
         this.type = 'S';
         this.design = "PLAIN";
@@ -51,7 +51,7 @@ public class HairTies extends Product implements Serializable{
     public HairTies(char type, String design, boolean uniform, double price, int numberofItems, String Description) {
         super(price, numberofItems, Description);
         this.type = type;
-        this.design = design;
+        this.design = design.toUpperCase();
         this.uniform = uniform;
         this.setSKU(this.genSKU());
     }
@@ -69,7 +69,7 @@ public class HairTies extends Product implements Serializable{
     public HairTies(char type, String design, boolean uniform, double price, int numberofItems, String Description, int uniqueID) {
         super(price, numberofItems, Description, uniqueID);
         this.type = type;
-        this.design = design;
+        this.design = design.toUpperCase();
         this.uniform = uniform;
         this.setSKU(this.genSKU());
     }
@@ -77,13 +77,13 @@ public class HairTies extends Product implements Serializable{
     private String genSKU(){
         String ret;
         ret = "HT"
-                + "-" + this.type
+                + "-" + this.type + this.getNumberofItems()
                 + "-" + this.design.substring(0, 3);
         // if all entries are uniform
         if (this.uniform){
             ret = ret + "-" + this.getNumberofItems();
         }
-        
+        ret = ret + "-" + this.getUniqueID();
         return ret;
     }
     

@@ -10,11 +10,8 @@ import KemiAdesanya.Item.*;
 import java.util.List;
 import java.io.*;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.LinkedList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -22,7 +19,14 @@ import javax.swing.JOptionPane;
  */
 public class KemiAdesanyaGUIFrame extends javax.swing.JFrame {
     private static final Logger LOG = Logger.getLogger(KemiAdesanyaGUIFrame.class.getName());
-
+    private static final KemiAdesanyaGUIFrame  Instance = new KemiAdesanyaGUIFrame();
+    private static final javax.swing.JFrame next = HTFrame.getInstance();
+    private static final javax.swing.JFrame prev = null;
+    public static KemiAdesanyaGUIFrame getInstance()
+    {
+        return Instance;
+    }
+    
     /**
      * Creates new form KemiAdesanyaGUIFrame
      */
@@ -39,97 +43,46 @@ public class KemiAdesanyaGUIFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Logo = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        jSeparator1 = new javax.swing.JSeparator();
-        jSeparator2 = new javax.swing.JSeparator();
-        filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 0));
-        button1 = new java.awt.Button();
-        jComboBox1 = new javax.swing.JComboBox(items.getProduct_List());
+        jPanel1 = new javax.swing.JPanel();
+        Next = new javax.swing.JButton();
+        jComboBox1 = new javax.swing.JComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("KemiAdesanya");
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setMaximumSize(new java.awt.Dimension(520, 520));
+        setMinimumSize(new java.awt.Dimension(500, 500));
+        setPreferredSize(new java.awt.Dimension(500, 500));
+        getContentPane().setLayout(new java.awt.FlowLayout());
+        getContentPane().add(jPanel1);
 
-        Logo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/KemiAdesanya/Files/Logo.png"))); // NOI18N
-        Logo.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-
-        jLabel1.setText("Select a Product");
-
-        button1.setLabel("button1");
-        button1.addActionListener(new java.awt.event.ActionListener() {
+        Next.setText("Next");
+        Next.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                button1ActionPerformed(evt);
+                NextActionPerformed(evt);
             }
         });
+        getContentPane().add(Next);
 
-        jComboBox1.setToolTipText("Select A Product from the drop down list");
-        jComboBox1.setAutoscrolls(true);
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox1ActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jSeparator2))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(112, 112, 112)
-                .addComponent(jLabel1)
-                .addGap(100, 100, 100)
-                .addComponent(jComboBox1, 0, 283, Short.MAX_VALUE)
-                .addGap(21, 21, 21)
-                .addComponent(button1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(101, 101, 101))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(224, 224, 224)
-                .addComponent(filler1, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(Logo)
-                .addGap(299, 299, 299))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(Logo)
-                .addGap(26, 26, 26)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(button1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(filler1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(190, Short.MAX_VALUE))
-        );
+        getContentPane().add(jComboBox1);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_button1ActionPerformed
+    private void NextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NextActionPerformed
+        KemiAdesanya.Utilities.Util.switchFrames(this, next);
+    }//GEN-LAST:event_NextActionPerformed
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        // TODO add your handling code here:        
-        String [] ret;
-        int ind = jComboBox1.getSelectedIndex();
-        ret = Items.getProduct_List();
-        System.out.println("Index Selected is : " + jComboBox1.getSelectedIndex());
-        System.out.println("Entry selected is : " + ret[ind]);
-        JOptionPane.showMessageDialog(rootPane, ret[ind], null, WIDTH);
-        
+        // TODO add your handling code here:
+        Object ans = jComboBox1.getSelectedItem();
+        System.out.print(ans);
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     /**
@@ -164,13 +117,13 @@ public class KemiAdesanyaGUIFrame extends javax.swing.JFrame {
         
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new KemiAdesanyaGUIFrame().setVisible(true);
+                KemiAdesanyaGUIFrame.getInstance().setVisible(true);
             }
         });
         
-        List <HairTies> HT = new ArrayList();
+        //List <HairTies> HT = new ArrayList();
         List <HairTies> HO;
-        
+        /*
         HT.add(ht1);
         HT.add(ht2);
         HT.add(new HairTies());
@@ -181,6 +134,7 @@ public class KemiAdesanyaGUIFrame extends javax.swing.JFrame {
         
         //Saving Hair Ties
         save2(HT);
+        */
         // Retrieve Hair Ties
         HO = (List <HairTies>) retrieve("KemiAdesanya2.ser");
         System.out.println("ht1 @ "+HT.indexOf(ht1));
@@ -191,7 +145,7 @@ public class KemiAdesanyaGUIFrame extends javax.swing.JFrame {
         System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++=+");
         System.out.println("USING LISTS::");
         i=0;
-        for(HairTies h: HT){
+        for(HairTies h: HO){
             System.out.println("HInList  " + i +" : "+h);
             System.out.println("HOutList " + i +" : "+HO.get(i));
             System.out.println("Excel format :: "+ HO.get(i).toExcel());
@@ -203,15 +157,11 @@ public class KemiAdesanyaGUIFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel Logo;
-    private java.awt.Button button1;
-    private javax.swing.Box.Filler filler1;
+    private javax.swing.JButton Next;
     private javax.swing.JComboBox jComboBox1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
-
+    
     // Product List
     public File f;
     
@@ -219,7 +169,24 @@ public class KemiAdesanyaGUIFrame extends javax.swing.JFrame {
     //HairTies(char type, String design, boolean uniform, double price, int numberofItems, String Description)
     public static HairTies ht1 = new HairTies('S', "PLAIN", true, 7.25, 5, "Blue hair ties - pack of five");
     public static HairTies ht2 = new HairTies('B', "DESIGN", true, 69.59, 50, "Peacock Designed Ties", 23654);
+    private static List<HairTies> HT = new ArrayList();
+
+    public static List<HairTies> getHT() {
+        HT = (List <HairTies>) retrieve("KemiAdesanya2.ser");
+        return HT;
+    }
     
+    /**
+     *
+     * @param ht - hairTie to add and save to output file
+     */
+    public static void addNsave(HairTies ht)
+    {
+        HT = (List <HairTies>) retrieve("KemiAdesanya2.ser");
+        HT.add(ht);
+        
+        save2(HT);
+    }
     
     private static void save(HairTies[] ht)
     {

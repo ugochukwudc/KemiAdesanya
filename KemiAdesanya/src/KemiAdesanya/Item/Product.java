@@ -102,8 +102,8 @@ public abstract class Product implements Serializable{
      * @return A unique integer generated for each item
      */
     private int genUniqueID() {
-        int MAX = 10000001;
-        int min = 1001;
+        int MAX = 1001;
+        int min = 1;
         int ret;
         ret = (int) (Math.random()*(MAX-min)) + min;
         return ret;
@@ -159,7 +159,8 @@ public abstract class Product implements Serializable{
                 + tab
                 + this.getDescription()
                 + tab
-                + this.dispPrice();
+                + this.price;
+            //    + this.dispPrice();
         return ret;
     }
     
