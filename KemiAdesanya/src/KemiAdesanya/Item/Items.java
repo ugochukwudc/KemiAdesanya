@@ -54,7 +54,7 @@ public class Items implements Serializable{
         NumberFormatter pAmount = new NumberFormatter(amount);
         pAmount.setMinimum(5.00);
         pAmount.setMaximum(1000.00);
-        //pAmount.setAllowsInvalid(true);
+        pAmount.setAllowsInvalid(false);
         //pAmount.setCommitsOnValidEdit(true);
         pAmount.setOverwriteMode(true);
         return pAmount;
@@ -70,6 +70,7 @@ public class Items implements Serializable{
         noif.setMinimum(1);
         noif.setMaximum(300);
         noif.setOverwriteMode(true);
+        noif.setAllowsInvalid(false);
         return noif;
     }
     

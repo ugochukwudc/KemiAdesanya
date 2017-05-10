@@ -8,6 +8,7 @@ package KemiAdesanya.Item;
 
 import java.io.Serializable;
 import java.text.NumberFormat;
+import java.util.Objects;
 import java.util.logging.Logger;
 
 /**
@@ -163,5 +164,37 @@ public abstract class Product implements Serializable{
             //    + this.dispPrice();
         return ret;
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 17 * hash + this.numberofItems;
+        hash = 17 * hash + Objects.hashCode(this.Name);
+        hash = 17 * hash + this.uniqueID;
+        hash = 17 * hash + Objects.hashCode(this.SKU);
+        hash = 17 * hash + Objects.hashCode(this.Description);
+        hash = 17 * hash + (int) (Double.doubleToLongBits(this.price) ^ (Double.doubleToLongBits(this.price) >>> 32));
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Product other = (Product) obj;
+        if (!Objects.equals(this.SKU, other.SKU)) {
+            return false;
+        }
+        return true;
+    }
     
+    public boolean search(){
+        
+        return true;
+    }
+
 }

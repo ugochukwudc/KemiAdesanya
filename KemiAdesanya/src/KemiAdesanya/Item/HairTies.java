@@ -7,6 +7,7 @@
 package KemiAdesanya.Item;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 
 /**
@@ -86,6 +87,37 @@ public class HairTies extends Product implements Serializable{
         ret = ret + "-" + this.getUniqueID();
         return ret;
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 89 * hash + this.type;
+        hash = 89 * hash + Objects.hashCode(this.design);
+        hash = 89 * hash + (this.uniform ? 1 : 0);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final HairTies other = (HairTies) obj;
+        if (this.type != other.type) {
+            return false;
+        }
+        if (!Objects.equals(this.design, other.design)) {
+            return false;
+        }
+        if (this.uniform != other.uniform) {
+            return false;
+        }
+        return true;
+    }
+    
     
 }
 

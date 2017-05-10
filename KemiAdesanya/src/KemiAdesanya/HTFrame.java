@@ -339,6 +339,7 @@ public class HTFrame extends javax.swing.JFrame {
     private void TextField_NumberofTiesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextField_NumberofTiesActionPerformed
         // TODO add your handling code here:
         noi = ((Number) TextField_NumberofTies.getValue()).intValue();
+        System.out.println("Number of items: "+noi);
     }//GEN-LAST:event_TextField_NumberofTiesActionPerformed
 
     private void Button_NextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_NextActionPerformed
@@ -426,15 +427,12 @@ public class HTFrame extends javax.swing.JFrame {
         
         uniform = Checkbox_Uniform.isSelected();
         design = (String) SelectDesignComboBox.getSelectedItem();
-        /*
-        if (TextField_NumberofTies.isValid()){
+        try{
             noi = ((Number) TextField_NumberofTies.getValue()).intValue();
-        }
-        if (TextField_Price.isValid()){
             price = ((Number) TextField_Price.getValue()).doubleValue();
+        }catch(Exception e){
+            e.printStackTrace();
         }
-        */
-        
         desc = TextField_Description.getText();
         color[0]=TextField_Color1.getText();
         color[1]=TextField_Color2.getText();
