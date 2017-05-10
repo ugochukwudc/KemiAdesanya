@@ -7,13 +7,26 @@
 package KemiAdesanya;
 
 import KemiAdesanya.Item.*;
+import java.util.List;
+import java.io.*;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author Ugochukwudouglas
  */
 public class KemiAdesanyaGUIFrame extends javax.swing.JFrame {
-
+    private static final Logger LOG = Logger.getLogger(KemiAdesanyaGUIFrame.class.getName());
+    private static final KemiAdesanyaGUIFrame  Instance = new KemiAdesanyaGUIFrame();
+    private static final javax.swing.JFrame next = HTFrame.getInstance();
+    private static final javax.swing.JFrame prev = null;
+    public static KemiAdesanyaGUIFrame getInstance()
+    {
+        return Instance;
+    }
+    
     /**
      * Creates new form KemiAdesanyaGUIFrame
      */
@@ -30,72 +43,47 @@ public class KemiAdesanyaGUIFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Logo = new javax.swing.JLabel();
-        ScrollDisp = new javax.swing.JScrollPane();
-        DispHT = new javax.swing.JTextArea();
-        Do = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        Next = new javax.swing.JButton();
+        jComboBox1 = new javax.swing.JComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("KemiAdesanya");
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setMaximumSize(new java.awt.Dimension(520, 520));
+        setMinimumSize(new java.awt.Dimension(500, 500));
+        setPreferredSize(new java.awt.Dimension(500, 500));
+        getContentPane().setLayout(new java.awt.FlowLayout());
+        getContentPane().add(jPanel1);
 
-        Logo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/KemiAdesanya/Files/Logo.png"))); // NOI18N
-        Logo.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-
-        DispHT.setColumns(20);
-        DispHT.setRows(5);
-        ScrollDisp.setViewportView(DispHT);
-
-        Do.setText("Do");
-        Do.addActionListener(new java.awt.event.ActionListener() {
+        Next.setText("Next");
+        Next.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                DoActionPerformed(evt);
+                NextActionPerformed(evt);
             }
         });
+        getContentPane().add(Next);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(295, Short.MAX_VALUE)
-                .addComponent(Logo)
-                .addContainerGap(298, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(ScrollDisp))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(Do)
-                .addGap(128, 128, 128))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(Logo)
-                .addGap(36, 36, 36)
-                .addComponent(ScrollDisp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(Do)
-                .addContainerGap(141, Short.MAX_VALUE))
-        );
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jComboBox1);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void DoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DoActionPerformed
+    private void NextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NextActionPerformed
+        KemiAdesanya.Utilities.Util.switchFrames(this, next);
+    }//GEN-LAST:event_NextActionPerformed
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         // TODO add your handling code here:
-        String ret;
-        
-        ret = ht1.toExcel()
-                + "\r\n" + ht2.toExcel()
-                + "\r\n" + "\r\n" + "\r\n"
-                + "======================================="
-                + "\r\n" + ht1
-                + "\r\n" + ht2;
-        DispHT.setTabSize(4);
-        DispHT.setText(ret);
-    }//GEN-LAST:event_DoActionPerformed
+        Object ans = jComboBox1.getSelectedItem();
+        System.out.print(ans);
+    }//GEN-LAST:event_jComboBox1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -123,24 +111,157 @@ public class KemiAdesanyaGUIFrame extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(KemiAdesanyaGUIFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        
+        int i=0;
         
         /* Create and display the form */
+        
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new KemiAdesanyaGUIFrame().setVisible(true);
+                KemiAdesanyaGUIFrame.getInstance().setVisible(true);
             }
         });
+        
+        //List <HairTies> HT = new ArrayList();
+        List <HairTies> HO;
+        /*
+        HT.add(ht1);
+        HT.add(ht2);
+        HT.add(new HairTies());
+        HT.add(new HairTies('B',"PEACE", true, 79.99, 100, "Peace Hair Ties - Bulk of 100", 35547));
+        HT.add(new HairTies('S',"PEACE", true, 7.99, 5, "Peace Hair Ties - Bulk of 100", 12347));
+        HT.add(new HairTies('B',"PEACE", true, 79.99, 100, "Peace Hair Ties - Bulk of 100", 5467));
+        HT.add(new HairTies('S',"PEACE", true, 7.99, 5, "Peace Hair Ties - Bulk of 100", 3487));
+        
+        //Saving Hair Ties
+        save2(HT);
+        */
+        // Retrieve Hair Ties
+        HO = (List <HairTies>) retrieve("KemiAdesanya2.ser");
+        System.out.println("ht1 @ "+HT.indexOf(ht1));
+        System.out.println("ht2 @ "+HT.indexOf(ht2));
+        System.out.println("New HairTies() @ "+HT.indexOf(new HairTies()));
+        System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++=+");
+        System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++=+");
+        System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++=+");
+        System.out.println("USING LISTS::");
+        i=0;
+        for(HairTies h: HO){
+            System.out.println("HInList  " + i +" : "+h);
+            System.out.println("HOutList " + i +" : "+HO.get(i));
+            System.out.println("Excel format :: "+ HO.get(i).toExcel());
+            i++;
+            System.out.println("========");
+            
+        }
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextArea DispHT;
-    private javax.swing.JButton Do;
-    private javax.swing.JLabel Logo;
-    private javax.swing.JScrollPane ScrollDisp;
+    private javax.swing.JButton Next;
+    private javax.swing.JComboBox jComboBox1;
+    private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
-
+    
+    // Product List
+    public File f;
+    
+    static final Items items = Items.getInstance();
     //HairTies(char type, String design, boolean uniform, double price, int numberofItems, String Description)
-    public HairTies ht1 = new HairTies('S', "PLAIN", true, 7.25, 5, "Blue hair ties - pack of five");
-    public HairTies ht2 = new HairTies('B', "DESIGN", true, 69.59, 50, "Peacock Designed Ties", 23654);
+    public static HairTies ht1 = new HairTies('S', "PLAIN", true, 7.25, 5, "Blue hair ties - pack of five");
+    public static HairTies ht2 = new HairTies('B', "DESIGN", true, 69.59, 50, "Peacock Designed Ties", 23654);
+    private static List<HairTies> HT = new ArrayList();
+
+    public static List<HairTies> getHT() {
+        HT = (List <HairTies>) retrieve("KemiAdesanya2.ser");
+        return HT;
+    }
+    
+    /**
+     *
+     * @param ht - hairTie to add and save to output file
+     */
+    public static void addNsave(HairTies ht)
+    {
+        HT = (List <HairTies>) retrieve("KemiAdesanya2.ser");
+        HT.add(ht);
+        
+        save2(HT);
+    }
+    
+    private static void save(HairTies[] ht)
+    {
+        //save Hair Tie objects to file
+        //serialize the object
+        try (
+                OutputStream file = new FileOutputStream("KemiAdesanya.ser");
+                OutputStream buffer = new BufferedOutputStream(file);
+                ObjectOutput output = new ObjectOutputStream(buffer);
+        ){
+            for (HairTies ht3 : ht) {
+                System.out.println("Writing : "+ht3);
+                output.writeObject(ht3);
+            }
+          //output.writeObject(ht);
+          output.close();
+          buffer.close();
+          file.close();
+        }
+        catch(IOException ex){
+          LOG.log(Level.SEVERE, "Cannot perform output.", ex);
+        }
+
+    }
+    
+        private static void save2(Object htlist)
+    {
+        //save Hair Tie objects to file
+        //serialize the object
+        try (
+                OutputStream file = new FileOutputStream("KemiAdesanya2.ser");
+                OutputStream buffer = new BufferedOutputStream(file);
+                ObjectOutput output = new ObjectOutputStream(buffer);
+        ){
+            output.writeObject(htlist);
+          //output.writeObject(ht);
+          output.close();
+          buffer.close();
+          file.close();
+        }
+        catch(IOException ex){
+          LOG.log(Level.SEVERE, "Cannot perform output.", ex);
+        }
+
+    }
+        
+    /**
+     * Function Retrieve is used to get objects that have been saved to file
+     * @param sfile Name of file to retrieve object from
+     * @return The de-serialized object retrieved from 'sfile'
+     */
+    public static Object retrieve(String sfile)
+    {
+        Object p = new Object();
+        //Retrieve hair tie objects from file
+        
+        //deserialize the quarks.ser file
+        try(
+          InputStream file = new FileInputStream(sfile);
+          InputStream buffer = new BufferedInputStream(file);
+          ObjectInput input = new ObjectInputStream (buffer);
+        ){
+          //deserialize the List
+          p = input.readObject();
+          //System.out.println("Read Object = " + ht[0]);
+          //display its data
+
+        }
+        catch(ClassNotFoundException ex){
+          LOG.log(Level.SEVERE, "Cannot perform input. Class not found.", ex);
+        }
+        catch(IOException ex){
+          LOG.log(Level.SEVERE, "Cannot perform input.", ex);
+        }
+        return p;
+    }
+    
 }
